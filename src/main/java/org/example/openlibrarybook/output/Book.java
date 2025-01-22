@@ -1,18 +1,34 @@
 package org.example.openlibrarybook.output;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+//import jakarta.persistence.;
+import jakarta.persistence.*;
+//import lombok.*;
+import lombok.*;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@Getter
-@Setter
+import java.time.LocalDate;
+
+@Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Component
 public class Book {
-    @JsonProperty("bookId")
-    private String bookId;
-    @JsonProperty("bookTitle")
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id; // Use Long for auto-generated IDs
+    @Id
+    @Column(unique = true, nullable = false)
+    private String isbn;
+
+    @Column(nullable = false)
     private String title;
-    @JsonProperty("bookAuthor")
-    private String authorId;
+
+//    @Column
+//    private LocalDate publishDate;
+
+    @Column
+    private String url;
 }

@@ -1,15 +1,19 @@
 package org.example.openlibrarybook.output;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
-@Data
+@Entity
 public class Author {
-    @JsonProperty("authorId")
-    private String authorId;
-    private String authorName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true, nullable = false)
+    private String name;
+
+    private String url;
 }
